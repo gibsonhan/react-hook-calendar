@@ -15,14 +15,14 @@ const headerDays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 const createMonthMatrix = (month, year) => {
     
     const monthMatrix = []
-    const date = `${month}-1-${year}`
+    const date = `${month}/1/${year}`
     const maxDays = getDaysInMonth(new Date(date)) 
     const numWeeks = getWeeksInMonth(new Date(date))
     
     //.getDay() API: Monday Start at index 0
     const firstDay = startOfMonth(new Date(date))
     const firstDayIndx = firstDay.getDay()
-    
+
     let startDay = 1
     for(let week = 0; week < numWeeks; week++){
         

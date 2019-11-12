@@ -52,7 +52,6 @@ const Calendar = () => {
     }
     
     const generateCalendar = () => {
-        console.log(calendar.length)
         if(calendar.length === 0) return
         const array = []
 
