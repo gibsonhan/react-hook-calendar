@@ -2,14 +2,15 @@
 import {
     addDays,
     addMonths,
+    differenceInDays,
     format,
     getDaysInMonth, 
     getWeeksInMonth, 
-    startOfMonth, 
-    isAfter
+    isAfter,
+    startOfMonth 
     } from 'date-fns'
-import { differenceInDays } from 'date-fns/esm'
 
+const headerDays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 const createMonthMatrix = (month, year) => {
 
     const calendar = []
@@ -29,9 +30,7 @@ const createMonthMatrix = (month, year) => {
 
         const weekLen = calendar[week].length - 1
         const lastWkIndex = calendar[week][weekLen]
-
         startDay = lastWkIndex +1
-
     }
     return calendar
 }
@@ -39,15 +38,13 @@ const createMonthMatrix = (month, year) => {
 const createWeek = (offset, start, max) => {
     const week = []
     let day = start;
-
-    //fill offset days
+    
     if(day === 1) {
         for(let i = 1; i <= offset; i++) {
             week.push(0)
         }
     }
 
-    //fill week
     for(let i = week.length; i < 7 && day <= max; i++) {
         week.push(day++)
     }
@@ -128,12 +125,13 @@ const resetHighlight = (startDate, endDate) => {
         setColor(nextDay)
         day = nextDay
     }
-    
+
     setColor(startDate)
     setColor(endDate)
 }
 
 export default {
+    headerDays,
     createMonthMatrix,
     calendarRange,
     setColor,

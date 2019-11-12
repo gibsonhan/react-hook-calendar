@@ -3,15 +3,13 @@ import helper from '../utils/calendar_helper'
 import Day from '../components/Day'
 
 const Calendar = () => {
-    const headerDays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
-    
     const [calendarArr, setCalendarArr] = useState([])
     const [calendar, setCalendar] = useState([])
     const [index, setIndex] = useState(1)
     const [range, setRange] = useState([])
 
     const showDaysHeader = () => {
-        const headers = headerDays.map(day => <Day key={day} val={day}/>)
+        const headers = helper.headerDays.map(day => <Day key={day} val={day}/>)
         return <tr>{headers}</tr>
     }
 
@@ -25,11 +23,11 @@ const Calendar = () => {
             
             const week = row.map(col => {
                 if(col === 0) {
-                    return <Day key={month+headerDays[dayIdnx++]+col} val =""/>
+                    return <Day key={month+helper.headerDays[dayIdnx++]+col} val =""/>
                 } 
                 else {
                     return <Day 
-                                key={month+headerDays[dayIdnx++]+col} 
+                                key={month+helper.headerDays[dayIdnx++]+col} 
                                 month={month}
                                 val={col}
                                 year={year} 
