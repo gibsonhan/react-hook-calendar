@@ -9,15 +9,15 @@ const Calendar = () => {
     const [range, setRange] = useState([])
 
     const showDaysHeader = () => {
+        if(calendar.length === 0) return 
         const headers = helper.headerDays.map(day => <Day key={day} val={day}/>)
         return <tr>{headers}</tr>
     }
 
     const generateMonth = (i) => {
-        
+       
         const { month, year } = calendar[i]
         const matrix = helper.createMonthMatrix(month, year)
-        
         return matrix.map(row => {
             var dayIdnx = 0
             
@@ -52,6 +52,7 @@ const Calendar = () => {
     }
     
     const generateCalendar = () => {
+        console.log(calendar.length)
         if(calendar.length === 0) return
         const array = []
 
@@ -83,7 +84,7 @@ const Calendar = () => {
   
     const handleClear = () => {
         helper.resetHighlight(range[0], range[1])
-        setRange(prevState => [])
+        setRange([])
         setCalendarArr(prevState => [...prevState])
     }
 

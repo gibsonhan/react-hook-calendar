@@ -11,28 +11,28 @@ import {
     } from 'date-fns'
 
 const headerDays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
-const createMonthMatrix = (month, year) => {
 
-    const calendar = []
-    const date = `${month} - 1 - ${year}`
+const createMonthMatrix = (month, year) => {
+    
+    const monthMatrix = []
+    const date = `${month}-1-${year}`
     const maxDays = getDaysInMonth(new Date(date)) 
     const numWeeks = getWeeksInMonth(new Date(date))
     
     //.getDay() API: Monday Start at index 0
     const firstDay = startOfMonth(new Date(date))
     const firstDayIndx = firstDay.getDay()
-
-    let startDay = 1
     
+    let startDay = 1
     for(let week = 0; week < numWeeks; week++){
         
-        calendar.push(createWeek(firstDayIndx, startDay, maxDays))
+        monthMatrix.push(createWeek(firstDayIndx, startDay, maxDays))
 
-        const weekLen = calendar[week].length - 1
-        const lastWkIndex = calendar[week][weekLen]
+        const weekLen = monthMatrix[week].length - 1
+        const lastWkIndex = monthMatrix[week][weekLen]
         startDay = lastWkIndex +1
     }
-    return calendar
+    return monthMatrix
 }
 
 const createWeek = (offset, start, max) => {
