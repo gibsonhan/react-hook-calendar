@@ -11,7 +11,7 @@ body {
 .calendar {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px;
-    height: 400px;
+    min-height: 400px;
     width: 400px;
     padding: 10px;
     border: solid #f85694 10px;
@@ -25,11 +25,17 @@ body {
     margin: 15px 0 15px 0;
 }
 
+.display {
+    display: flex;
+    justify-content: space-around;
+}
+
 .action {
     display: flex;
     justify-content: space-between;
     padding: 0px 10px 0px 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 table {
     text-align: center;

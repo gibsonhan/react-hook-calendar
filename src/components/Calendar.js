@@ -110,6 +110,7 @@ const Calendar = () => {
                 {displayMMYYYY()}
                 <span onClick={()=>{handleMonth("next")}}> Next </span>
             </div>
+            <div className="display">{helper.formatDate(range[0])} {helper.formatDate(range[1])}</div>
             <table>
                 <thead>
                     {showDaysHeader()}

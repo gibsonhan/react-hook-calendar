@@ -130,13 +130,20 @@ const resetHighlight = (startDate, endDate) => {
     setColor(endDate)
 }
 
+const formatDate = (date) => {
+    if(!date) return
+    const day = new Date(date)
+    return format(day, 'MMM-dd')
+}
+
 export default {
-    headerDays,
     createMonthMatrix,
     calendarRange,
     setColor,
     dateAfter,
-    numOfDays,
+    formatDate,
+    headerDays,
     highlightDays,
+    numOfDays,
     resetHighlight,
 }
