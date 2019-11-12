@@ -13,7 +13,6 @@ import {
 const headerDays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 
 const createMonthMatrix = (month, year) => {
-    
     const monthMatrix = []
     const date = `${month}/1/${year}`
     const maxDays = getDaysInMonth(new Date(date)) 

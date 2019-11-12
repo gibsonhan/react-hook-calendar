@@ -3,7 +3,6 @@ import helper from '../utils/calendar_helper'
 import Day from '../components/Day'
 
 const Calendar = () => {
-    const [calendarArr, setCalendarArr] = useState([])
     const [calendar, setCalendar] = useState([])
     const [index, setIndex] = useState(1)
     const [range, setRange] = useState([])
@@ -14,31 +13,8 @@ const Calendar = () => {
         return <tr>{headers}</tr>
     }
 
-    const generateMonth = (i) => {
-       
-        const { month, year } = calendar[i]
-        const matrix = helper.createMonthMatrix(month, year)
-        return matrix.map(row => {
-            var dayIdnx = 0
-            
-            const week = row.map(col => {
-                if(col === 0) {
-                    return <Day key={month+helper.headerDays[dayIdnx++]+col} val =""/>
-                } 
-                else {
-                    return <Day 
-                                key={month+helper.headerDays[dayIdnx++]+col} 
-                                month={month}
-                                val={col}
-                                year={year} 
-                                getDate={getDate}
-                               /> 
-                }
-            })
-            return (<tr key={month+year+row}>{week}</tr>)
-        })
-    }
-
+    
+    
     const getDate = (element) => {
         setRange(prevState => {
             if(prevState.length === 2) return prevState
@@ -50,19 +26,10 @@ const Calendar = () => {
             return [...prevState, element]
         })
     }
-    
-    const generateCalendar = () => {
-        if(calendar.length === 0) return
-        const array = []
-
-        for(let i = 0; i < calendar.length; i++) {
-            array.push(generateMonth(i))
-        }
-        setCalendarArr(array)
-    }
 
     const displayCalendar = () => {
-        return calendarArr[index]
+        if(calendar.length === 0 ) return
+        return calendar[index].matrix
     }
     
     const displayMMYYYY = () => {
@@ -84,14 +51,19 @@ const Calendar = () => {
     const handleClear = () => {
         helper.resetHighlight(range[0], range[1])
         setRange([])
-        setCalendarArr(prevState => [...prevState])
+    }
+
+    const handleSave = () => {
+        if(range.length === 0)  window.alert(`Please Select Your Dates`)
+        if(range.length === 1)  window.alert(`Please Select one more date`)
+        if(range.length === 2) window.alert(`Your dates are ${range[0]} ${range[1]}`)
     }
 
     useEffect(() => {
-        if(range.length === 1) {
+        if (range.length === 1) {
             helper.setColor(range[0], "set")
         }
-        if(range.length === 2) {
+        if (range.length === 2) {
             helper.setColor(range[0], "set")
             helper.setColor(range[1], "set")
             helper.highlightDays(range[0], range[1])
@@ -99,8 +71,42 @@ const Calendar = () => {
     })
 
     useEffect(() => {
-        let months = helper.calendarRange(12)
-        setCalendar(months)
+        const generateCalendar = (num) => {
+            const array = []
+            const months = helper.calendarRange(num)
+
+            for (let i = 0; i < months.length; i++) {
+                array.push(generateMonth(months[i]))
+            }
+            return array
+        }
+
+        const generateMonth = (calendarMonth) => {
+            const { year, month } = calendarMonth
+            const monthMatrix = helper.createMonthMatrix(month, year)
+
+            const createdMonth = monthMatrix.map(row => {
+                var dayIdnx = 0
+                const week = row.map(col => {
+                    return (col === 0)
+                        ? <Day key={month + helper.headerDays[dayIdnx++] + col} val="" />
+                        : <Day key={month + helper.headerDays[dayIdnx++] + col}
+                            month={month}
+                            val={col}
+                            year={year}
+                            getDate={getDate} />
+                })
+                return <tr key={month + year + row}>{week}</tr>
+            })
+
+            return {
+                'month': month,
+                'year': year,
+                'matrix': createdMonth
+            }
+        }
+        const intalCalendar = generateCalendar(12)
+        setCalendar(intalCalendar)
     }, [])
 
     return (
@@ -121,7 +127,7 @@ const Calendar = () => {
             </table>
             <div className="action">
                 <button onClick={()=>{handleClear()}}>clear</button>
-                <button onClick={()=>{generateCalendar()}}>generate</button>
+                <button onClick={()=> {handleSave()}}>save</button>
             </div>
         </div>
     )
