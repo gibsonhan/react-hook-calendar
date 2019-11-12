@@ -1,0 +1,43 @@
+body {
+    margin: auto
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    background: rgb(255, 242, 214);
+}
+
+.calendar {
+    background-color: blue;
+    padding: 10px;
+    border: solid #f85694 10px;
+    border-radius: 5px;
+    border-spacing: 0px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0 15px 0;
+}
+
+.action {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px 0px 10px;
+    margin-top: 20px;
+}
+table {
+    text-align: center;
+    width: 100%;
+}
+
+td {
+    height: 40px;
+    width: 40px;
+}
+
+td:hover {
+    background-color: rgb(240, 240, 240)
+}
