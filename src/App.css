@@ -9,7 +9,10 @@ body {
 }
 
 .calendar {
-    background-color: blue;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px;
+    height: 400px;
+    width: 400px;
     padding: 10px;
     border: solid #f85694 10px;
     border-radius: 5px;
