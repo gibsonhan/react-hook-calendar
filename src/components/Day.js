@@ -1,26 +1,20 @@
-import React from 'react'
+import React from "react";
 
-const Day = ({ 
-    month, 
-    val, 
-    year,
-    getDate, 
-}) => {
+const Day = ({ month, val, year, getDate }) => {
+  if (val === "") {
+    return <td className="day">{val}</td>;
+  }
 
-    if(val ==="") {
-        return <td className="day">{val}</td>
-    }
-    
-    const date = `${month}/${val}/${year}`
-    return (
-        <td 
-            className="day"
-            onClick={()=>{getDate(date)}}
-            id={date}
-            >
-            {val}
-        </td>
-    )
-}
+  const date = `${month}/${val}/${year}`;
+  return (
+    <td
+      className="day"
+      onClick={() => {getDate(date);}}
+      id={date}
+    >
+      {val}
+    </td>
+  );
+};
 
-export default Day
+export default Day;
