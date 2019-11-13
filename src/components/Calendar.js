@@ -13,8 +13,6 @@ const Calendar = () => {
         return <tr>{headers}</tr>
     }
 
-    
-    
     const getDate = (element) => {
         setRange(prevState => {
             if(prevState.length === 2) return prevState
@@ -40,12 +38,9 @@ const Calendar = () => {
     }
 
     const handleMonth = (direction) => {
-        if(direction === "next") {
-            setIndex((index+1)%calendar.length)
-        }
-        else {
-            (index === 0) ? setIndex(calendar.length-1) : setIndex(index-1)
-        }
+        (direction === "next") 
+            ? setIndex((index+1)%calendar.length)
+            : (index === 0) ? setIndex(calendar.length-1) : setIndex(index-1)
     }
   
     const handleClear = () => {

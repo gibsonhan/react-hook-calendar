@@ -37,6 +37,16 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.selectedDates {
+    background-color: rgb(245, 105, 159) !important;
+    color: rgb(255,255,255)
+}
+
+.highlightDates{
+    background-color:rgb(255, 240, 210);
+    color: rgb(158, 158, 157)
+}
 table {
     text-align: center;
     width: 100%;

@@ -70,20 +70,9 @@ const setColor =(id, action) => {
     const element = document.getElementById(id)
     if(!element) return
 
-    if(action === "set") {
-        element.style.backgroundColor = 'rgb(245, 105, 159)'
-        element.style.color = 'rgb(255,255,255)'
-    }
-    else if (action ==="highlight") {
-        element.style.backgroundColor = 'rgb(255, 240, 210)'
-        element.style.color = 'rgb(158, 158, 157)'
-    }
-
-    else {
-        element.style.backgroundColor = 'rgb(255, 255, 255)'
-        element.style.color = 'rgb(0, 0, 0)'
-    }
-    
+    if(action === "set") element.className="selectedDates"
+    else if (action ==="highlight") element.className="highlightDates"
+    else element.className = "days"
 }
 
 const dateAfter = (endDate, startDate) => {
