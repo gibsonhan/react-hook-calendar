@@ -24,3 +24,7 @@ start application
 ```
 
 Application Opens up on [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+New Goal of this project
+- Replicate React-Dates with React Hooks
+- Bring this Repo to AirBnB Production Level
