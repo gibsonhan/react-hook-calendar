@@ -1,7 +1,7 @@
 # React Calendar
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+![](./assets/React-Hook-calendar.gif)
 ## Libraries Used
 [Date-fns](https://date-fns.org/)
 
@@ -26,5 +26,3 @@ start application
 Application Opens up on [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 New Goal of this project
-- Replicate React-Dates with React Hooks
-- Bring this Repo to AirBnB Production Level
